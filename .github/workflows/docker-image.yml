@@ -26,10 +26,10 @@ jobs:
       -
         name: Build docker image
         run: |
-          docker build -f Dockerfile -t aamir454/bookinfo-project:${GITHUB_SHA::8} .
+          docker build -f Dockerfile -t aamir454/bookinfo-project:phone${GITHUB_SHA::8} .
       - name: Push image to gitlab registry
         run: |
-          docker push aamir454/bookinfo-project:${GITHUB_SHA::8}
+          docker push aamir454/bookinfo-project:phone${GITHUB_SHA::8}
 
   deploy_to_dev:
     runs-on: devops-pak
@@ -63,7 +63,7 @@ jobs:
           ls
           cd manifests/dev-env/phone
           ls
-          export commitnum=${GITHUB_SHA::8}
+          export commitnum=phone${GITHUB_SHA::8}
           echo $commitnum
           yq e -i '.image.tag = env(commitnum)' values.yaml
           cat values.yaml
