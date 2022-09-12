@@ -65,8 +65,8 @@ jobs:
           ls
           export commitnum=phone${GITHUB_SHA::8}
           echo $commitnum
-          yq e -i '.image.tag = env(commitnum)' values.yaml
-          cat values.yaml
+          yq e -i '.image.tag = env(commitnum)' values-dev.yaml
+          cat values-dev.yaml
           
       - name: Push manifests changes to ArgoCD's manifest repo
         run: |
