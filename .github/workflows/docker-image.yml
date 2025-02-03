@@ -27,9 +27,9 @@ jobs:
         name: Build docker image
         run: |
           docker build -f Dockerfile -t aamir454/bookinfo-project:phone${GITHUB_SHA::8} .
-      - name: Push image to gitlab registry
-        run: |
-          docker push aamir454/bookinfo-project:phone${GITHUB_SHA::8}
+#      - name: Push image to gitlab registry
+#        run: |
+#          docker push aamir454/bookinfo-project:phone${GITHUB_SHA::8}
 
   deploy_to_dev:
     runs-on: ubuntu-latest
